@@ -3,13 +3,25 @@
 
 <head>
     <title>dir2json</title>
+    <style>
+        .button {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>dir2json</h1>
     <p>A simple tool that converts your files to JSON</p>
     <label for="input">Upload directory</label><br><input id="input" type="file" webkitdirectory directory />
-    <br />
+    <br /><br />
     <button onclick="navigator.clipboard.writeText(txt); alert('copied!')">Copy to clipboard</button>
     <script>
         let txt = ""
