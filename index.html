@@ -10,9 +10,9 @@
     <p>A simple tool that converts your files to JSON</p>
     <label for="input">Upload directory</label><br><input id="input" type="file" webkitdirectory directory />
     <br />
-    <textarea cols="20" rows="20" id="txt" readonly></textarea>
+    <button onclick="navigator.clipboard.writeText(txt); alert('copied!')">Copy to clipboard</button>
     <script>
-        let txt = document.getElementById('txt');
+        let txt = ""
         let input = document.getElementById('input');
         input.addEventListener("input", function (e) {
             txt.value = "[\n"
