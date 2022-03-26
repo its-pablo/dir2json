@@ -15,7 +15,7 @@
         let txt = ""
         let input = document.getElementById('input');
         input.addEventListener("input", function (e) {
-            txt.value = "[\n"
+            txt = "[\n"
             for (let i = 0; i < input.files.length; i++) {
                 let lastThing;
                 if (input.files.length === i + 1) {
@@ -23,9 +23,9 @@
                 } else {
                     lastThing = "\",\n"
                 }
-                txt.value += "\t\"" + input.files[i].webkitRelativePath + lastThing
+                txt += "\t\"" + input.files[i].webkitRelativePath + lastThing
             }
-            txt.value += "]"
+            txt += "]"
         })
     </script>
 </body>
