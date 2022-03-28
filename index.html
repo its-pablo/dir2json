@@ -44,7 +44,7 @@
         <button type="submit">Go</button>
     </form>
     <br />
-    <button onclick="navigator.clipboard.writeText(txt); alert('copied!')">Copy to clipboard</button>
+    <button id="clipboardCopy">Copy to clipboard</button>
     <script>
         let txt = ""
         document.querySelector('button [type="submit"]').addEventListener("click", function (e) {
