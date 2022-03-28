@@ -4,24 +4,30 @@
 <head>
     <title>dir2json</title>
     <style>
-        button, input[type="file"] {
-            background-color: blue;
+        button {
+            background-color: gainsboro;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 15px 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <h1>dir2json</h1>
-    <p>A simple tool that converts your files to JSON</p>
-    <label for="input">Upload directory</label><br><input id="input" type="file" webkitdirectory directory />
+    <p>A simple tool that converts your files to JSON. This will work on all browsers except for IE.</p>
+    <input class="hidden" id="input" type="file" webkitdirectory directory />
+    <button onclick="document.getElementById('input').click()">Upload directory</button>
     <br /><br />
     <button onclick="navigator.clipboard.writeText(txt); alert('copied!')">Copy to clipboard</button>
     <script>
@@ -39,6 +45,24 @@
                 txt += "\t\"" + input.files[i].webkitRelativePath + lastThing
             }
             txt += "]"
+        })
+        
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+        })
+        Toast.fire({
+            icon: 'success',
+            title: 'Files formatted successfully',
+            showCancelButton: true,
+            confirmButtonText: 'Copy JSON to clipboard',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({ title: "Copied", icon: "success" })
+            }
         })
     </script>
 </body>
