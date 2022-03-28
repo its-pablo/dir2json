@@ -27,14 +27,27 @@
 <body>
     <h1>dir2json</h1>
     <p>A simple tool that converts your files to JSON. This will work on all browsers except for IE.</p>
-    <input class="hidden" id="input" type="file" webkitdirectory directory />
-    <button onclick="document.getElementById('input').click()">Upload directory</button>
-    <br /><br />
+    <form>
+        <input class="hidden" id="input" type="file" webkitdirectory directory />
+        <button onclick="document.getElementById('input').click()">Upload directory</button>
+        <br />
+        <fieldset>
+            <legend>Additional config</legend>
+            <input type="text" name="prefix" id="prefixText"><label for="prefixText">Prefix</label>
+            <fieldset>
+                <legend>JSON type</legend>
+                <input type="radio" name="jsonType" id="jsonTypeArray"><label for="jsonTypeArray">Array</label>
+                <input type="radio" name="jsonType" id="jsonTypeObject"><label for="jsonTypeArray" disabled>Object
+                    (coming soon)</label>
+            </fieldset>
+        </fieldset>
+        <button type="submit">Go</button>
+    </form>
+    <br />
     <button onclick="navigator.clipboard.writeText(txt); alert('copied!')">Copy to clipboard</button>
     <script>
         let txt = ""
-        let input = document.getElementById('input');
-        input.addEventListener("input", function (e) {
+        document.querySelector('button [type="submit"]').addEventListener("click", function (e) {
             txt = "[\n"
             for (let i = 0; i < input.files.length; i++) {
                 let lastThing;
