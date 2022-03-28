@@ -45,24 +45,25 @@
                 txt += "\t\"" + input.files[i].webkitRelativePath + lastThing
             }
             txt += "]"
-        })
-        
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true
-        })
-        Toast.fire({
-            icon: 'success',
-            title: 'Files formatted successfully',
-            showCancelButton: true,
-            confirmButtonText: 'Copy JSON to clipboard',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({ title: "Copied", icon: "success" })
-            }
+
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            })
+            Toast.fire({
+                icon: 'success',
+                title: 'Files formatted successfully',
+                showCancelButton: true,
+                confirmButtonText: 'Copy JSON to clipboard',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({ title: "Copied", icon: "success" })
+                }
+            })
         })
     </script>
 </body>
